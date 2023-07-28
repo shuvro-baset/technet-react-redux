@@ -12,16 +12,15 @@ import {
   HiOutlineTrash,
 } from 'react-icons/hi';
 import { Button } from './ui/button';
-import { useAppDispatch, useAppSelector } from '@/redux/hook';
-import {
-  addToCart,
-  removeFromCart,
-  removeOne,
-} from '@/redux/features/cart/cartSlice';
+import { IProduct } from '@/types/globalTypes';
 
 export default function Cart() {
-  const { products, total } = useAppSelector((state) => state.cart);
-  const dispatch = useAppDispatch();
+  //! Dummy data
+
+  const products: IProduct[] = [];
+  const total = 0;
+
+  //! **
 
   return (
     <Sheet>
@@ -53,14 +52,13 @@ export default function Cart() {
                 </p>
               </div>
               <div className="border-l pl-5 flex flex-col justify-between">
-                <Button onClick={() => dispatch(addToCart(product))}>
+                <Button>
                   <HiOutlinePlus size="20" />
                 </Button>
-                <Button onClick={() => dispatch(removeOne(product))}>
+                <Button>
                   <HiMinus size="20" />
                 </Button>
                 <Button
-                  onClick={() => dispatch(removeFromCart(product))}
                   variant="destructive"
                   className="bg-red-500 hover:bg-red-400"
                 >
